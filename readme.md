@@ -1,58 +1,54 @@
-# 🧠 Smart Note App - Node.js REST API with AI-Powered Summarization
+# 🧠 NotesApp – AI-Powered Smart Note Management
 
-A smart note management system that allows users to register, authenticate, manage notes, upload profile pictures, and summarize notes using AI (OpenAI API). Built with Node.js, Express, MongoDB, JWT, and GraphQL.
+Welcome to **NotesApp**, a modern, secure, and AI-enhanced note management API built with Node.js, Express, MongoDB, GraphQL, and OpenAI. Users can register, log in, manage notes, upload profile pictures, and summarize their content using LLMs.
 
 ---
 
 ## 🚀 Features
 
-- 🔐 **User Authentication**
-  - Register, login, logout with JWT (asymmetric)
-  - Password hashing with bcrypt
-  - Profile picture upload (with file name collision prevention)
-  - Forgot/reset password with OTP via email
+### 🔐 Authentication
+- JWT-based login/logout with **asymmetric encryption**
+- Secure password storage with **bcrypt**
+- Upload and update profile pictures (via **Multer**)
+- **Forget/reset password** flow with OTP sent via email
 
-- 📝 **Note Management**
-  - Create, view (GraphQL), delete notes
-  - Filter notes by user, title, date range
-  - Pagination at DB level
-  - Fetch note owner data with each note
+### 📝 Notes
+- Create, fetch, and delete notes
+- Fetch notes via **GraphQL**
+- Filter notes by:
+  - Title
+  - Date range
+  - User ID
+- Pagination for performance
+- Auto-populated note author info
 
-- 🤖 **AI Integration**
-  - Summarize notes using OpenAI LLM
-  - Returns concise summaries via OpenAI API
+### 🤖 AI Summarization
+- Summarize long notes using **OpenAI's LLM API**
+- Returns short, human-readable summaries
 
-- 🔧 **Tech Stack**
-  - Node.js + Express
-  - MongoDB + Mongoose
-  - GraphQL (Apollo Server)
-  - JWT (asymmetric signing)
-  - bcrypt, multer, nodemailer, dotenv
-  - OpenAI SDK or `fetch`
-
-- 🛡️ **Security**
-  - CORS, Helmet, Rate Limiting
-  - Token revocation support
-  - Input validation via Joi
-  - 404 router fallback
-  - Centralized error handling middleware
+### 🛡️ Security & Best Practices
+- CORS + Helmet + Rate Limiting
+- JWT **token revocation**
+- Input validation with **Joi**
+- Centralized error handling
+- 404 route fallback
 
 ---
 
-## 📁 Project Structure
+## 🗂️ Project Structure
 
-smart-note-app/
+NotesApp/
 │
 ├── config/ # DB & email configs
 ├── controllers/ # Route logic
-├── middlewares/ # Auth, error handling, validators
-├── models/ # Mongoose schemas
-├── routes/ # API routes (modularized)
 ├── graphql/ # GraphQL schema & resolvers
-├── uploads/ # Profile pictures
-├── utils/ # Helpers: OTP, mail, tokens, etc.
-├── .env # Environment variables
-├── index.js # App entry point
+├── middlewares/ # Auth, validators, errors
+├── models/ # MongoDB schemas
+├── routes/ # Express routes
+├── uploads/ # Profile images
+├── utils/ # Helpers (OTP, mail, tokens)
+├── index.js # Entry point
+├── .env # Environment variables (excluded in .gitignore)
 └── README.md
 
 yaml
@@ -63,92 +59,114 @@ Edit
 
 ## 📦 Installation
 
-1. **Clone the repository**
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/smart-note-app.git
-cd smart-note-app
-Install dependencies
-
+git clone https://github.com/amiraqasim808/NotesApp.git
+cd NotesApp
+2. Install Dependencies
 bash
 Copy
 Edit
 npm install
-Configure .env
+3. Configure Environment
+Rename .env.example to .env and fill in your secrets:
 
 env
 Copy
 Edit
 PORT=5000
-MONGO_URI=mongodb://localhost:27017/smart-note
-OPENAI_API_KEY=your-openai-key
-PRIVATE_KEY_PATH=keys/private.pem
-PUBLIC_KEY_PATH=keys/public.pem
-JWT_ALGO=RS256
-EMAIL_USER=you@example.com
-EMAIL_PASS=yourpass
-Generate JWT Key Pair (if not done)
-
+MONGO_URI=mongodb+srv://<username>:<password>@<cluster-url>/<dbname>
+OPENAI_API_KEY=your_openai_api_key
+EMAIL_USER=your_email@example.com
+EMAIL_PASS=your_email_app_password
+PRIVATE_KEY_PATH=./config/private.key
+PUBLIC_KEY_PATH=./config/public.key
+JWT_EXPIRES=1d
+4. Generate JWT Keys
 bash
 Copy
 Edit
-openssl genrsa -out private.pem 2048
-openssl rsa -in private.pem -pubout -out public.pem
-Run the server
-
+mkdir -p config
+openssl genrsa -out config/private.key 2048
+openssl rsa -in config/private.key -pubout -out config/public.key
+5. Run the App
 bash
 Copy
 Edit
 npm run dev
-📬 API Endpoints
+🧪 API Endpoints
 🔐 Authentication
-POST /register — Register new user
-
-POST /login — Login and receive JWT
-
-POST /logout — Revoke JWT
-
-PATCH /upload-profile-pic — Upload profile picture
-
-POST /forget-password — Request password reset OTP
-
-POST /reset-password — Reset password using OTP
+Method	Endpoint	Description
+POST	/register	Register new user
+POST	/login	Login & get JWT
+POST	/logout	Revoke JWT
+PATCH	/upload-profile-pic	Upload profile image
+POST	/forget-password	Send OTP via email
+POST	/reset-password	Reset password with OTP
 
 📝 Notes
-POST /notes — Create note
-
-DELETE /notes/:id — Delete note
-
-POST /notes/:id/summarize — Summarize note content via OpenAI
+Method	Endpoint	Description
+POST	/notes	Create new note
+DELETE	/notes/:id	Delete note by ID
+POST	/notes/:id/summarize	Summarize note using AI
 
 📊 GraphQL
-POST /graphql — Get filtered notes using userId, title, or created range
+Method	Endpoint	Description
+POST	/graphql	Query notes with filters
 
-🧪 Postman Collection
-Download and import from:
+Example Query:
 
-arduino
+graphql
 Copy
 Edit
-https://github.com/your-username/smart-note-app/blob/main/SmartNoteApp.postman_collection.json
-✅ Best Practices Used
-JWT with asymmetric signing (RS256)
+{
+  notes(title: "meeting", page: 1, limit: 5) {
+    id
+    title
+    content
+    user {
+      id
+      email
+    }
+  }
+}
+🧾 Postman Collection
+📥 Download and import from:
+SmartNoteApp.postman_collection.json
 
-Password hashing with bcrypt
+✅ Best Practices Applied
+Asymmetric JWT signing with RS256
 
-OTP expiration and one-time use
+Token versioning to revoke on password reset
 
-File upload conflict prevention
+bcrypt for password hashing
 
-Input validation with Joi
+OTP with expiration & one-time use
 
-Environment variables via dotenv
+File conflict prevention (uploads)
 
-GraphQL for flexible querying
+GraphQL for flexible note retrieval
 
-Modular, clean code structure
+Modular, clean architecture
 
-Descriptive error handling and status codes
+Descriptive HTTP status codes and error messages
 
+🛠️ Tech Stack
+Node.js, Express
 
-# NotesApp
+MongoDB, Mongoose
+
+GraphQL via Apollo
+
+OpenAI API for summarization
+
+JWT, bcrypt, Multer, Joi
+
+Nodemailer for emails
+
+Helmet, Rate Limiting, CORS
+
+👩‍💻 Author
+Amira Qasim
+GitHub: @amiraqasim808
