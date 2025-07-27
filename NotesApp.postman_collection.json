@@ -1,0 +1,372 @@
+{
+	"info": {
+		"_postman_id": "06f8e018-9d0a-426f-9e20-2e9bf27a770d",
+		"name": "NotesApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29793257"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"amirakassem85@gmail.com\",\r\n\"password\":\"amira123\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "upload-profile-pic",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg1ZTgyZTEwZDc4ZWQwY2VmM2E2YTAiLCJlbWFpbCI6ImFtaXJha2Fzc2VtODU1QGdtYWlsLmNvbSIsImp0aSI6ImU5ZWNlYmIxLTZmMjgtNDZiZi1iYmY3LWQxZDU4NTQyOGEzZiIsInRva2VuVmVyc2lvbiI6MCwiaWF0IjoxNzUzNjA2MjM5LCJleHAiOjE3NTM2MDk4Mzl9.bnH9HUOLaPzt-1nM0ruUoqdzOu8rm1f45D1u9YsRbQBJLIy7qEHlAmJB2IcLirYEM03bDqxUJGEKOsaX0zkmFNUJmS_tePzDmLX5NRcy5HYDumNjNNpsEIIGU7W5CSA_oKBxacz9FMFsh4H1tKjl-1cIpAt2xr-O8mUR-Sw8sNn-lXn_bgIaJ29doBpBqw39pCuUMiJh6Dnq3ppKzYKFDhLt03RvXO19ECphUxd0BHTju6fw6ZIFZFqkfSXQmYKkH0R-mdk_oDNDxesWa7ekjY6SHCKooWDd4kE-wamXWBcNHmNbByVZK4UeR5hae-gfdOGPLM4WreOIRCYwHW-0Zg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profilePic",
+									"type": "file",
+									"src": "/D:/WhatsApp Image 2025-05-08 at 10.42.57_565d54d1.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/auth/upload-profile-pic",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"upload-profile-pic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "AMIRA__eyJhbGciOiJIUzI1NiJ9.YW1pcmFrYXNzZW04NTVAZ21haWwuY29t.tb37UYlDsyl9nICXsDtjgsNxp7ne4QbUsutymavZxp8",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"amirakassem855@gmail.com\",\r\n\"password\":\"amira12\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg1ZTgyZTEwZDc4ZWQwY2VmM2E2YTAiLCJlbWFpbCI6ImFtaXJha2Fzc2VtODU1QGdtYWlsLmNvbSIsImp0aSI6IjU3ZGNkOGMyLTkxYTItNGVkYy05YWU3LTU3Nzk5YmE2MTM1OCIsInRva2VuVmVyc2lvbiI6MCwiaWF0IjoxNzUzNjA2MjA0LCJleHAiOjE3NTM2MDk4MDR9.eEdfXUXewkgKc3KZD_A4pJm6TWzdCV4oZNKNuRPf1prYNSCYrTl-LI-OdXqTg3gAVsgeUMVeQpOzmwTkWB-IQznCmyx9y6YtzxFq2TtcAsMEDMpVRCVmO6QF1WanXqCB0H2DIzR7KoCBIsIGOhDeEu2pF16ePYQhKfkgEiY9wHqwxr2ActKN7PfZgjx83w6MPy6f3mer49U_5Zg_n726bwbg5p-38yqvtS2bk1bVMxsUBJXlqT-T-eBlIeg8d4mKc6v-bNOsqZRNStRdsVQzwQZAS_FxvRdrN0B69gi95SwVcB_SbKRNb5gDBbDoYj5YFlhDNYwOwewEWa6P37fNOA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"amirakassem855@gmail.com\",\r\n\"password\":\"amira123\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/auth/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forget-password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "AMIRA__eyJhbGciOiJIUzI1NiJ9.YW1pcmFrYXNzZW04NTVAZ21haWwuY29t.tb37UYlDsyl9nICXsDtjgsNxp7ne4QbUsutymavZxp8",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"amirakassem855@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/auth/forget-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"forget-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset-password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "AMIRA__eyJhbGciOiJIUzI1NiJ9.YW1pcmFrYXNzZW04NTVAZ21haWwuY29t.tb37UYlDsyl9nICXsDtjgsNxp7ne4QbUsutymavZxp8",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"amirakassem855@gmail.com\",\"otp\":\"283323\",\"newPassword\":\"amira12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/auth/reset-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "note",
+			"item": [
+				{
+					"name": "Graphql",
+					"item": [
+						{
+							"name": "add-note",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg1ZTgyZTEwZDc4ZWQwY2VmM2E2YTAiLCJlbWFpbCI6ImFtaXJha2Fzc2VtODU1QGdtYWlsLmNvbSIsImp0aSI6IjJiMjk3ODcxLTgzZGQtNGE4OC04YzVlLTVhMjEyYmNjYWEwZCIsInRva2VuVmVyc2lvbiI6MSwiaWF0IjoxNzUzNjEzMDIxLCJleHAiOjE3NTM2MTY2MjF9.fnrZsWVyY0x3DQMA-YdQ_KZCocR8joaImnr54mg3ts0UefYSFwIQrw6OiKlMmqDkXlt1IWb0iph2Lkhpx9FgJjz0YvH0dxHl1wdraZzrCT4M21IZeohMpmZNtm_oRYxN7P_NF0fRgyothhJ-I-baIsegz_d6zDbj6xs9muHyilFIHK9V_jyX4Vc_k9H9wO-ZNNlIQcyslS1cKuWniAmYp3MbUv-ViRVxQ4Vi9Nn0mMyy3SasfVzpKm0uAk7Us8SI3cv7erraUCH0difQPbyR_kvIuWj2lDaz-L09OlABxpLNVMm3IttFbZ9zu1d6D_2hQqDWK5t2t6yZafne4bmefQ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"query\": \"mutation AddNote($title: String!, $content: String!) { addNote(title: $title, content: $content) { id title content user { id  email } } }\",\r\n  \"variables\": {\r\n    \"title\": \"Sample Note Title\",\r\n    \"content\": \"This is the content of the note\"\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/graphql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete-note",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg1ZTgyZTEwZDc4ZWQwY2VmM2E2YTAiLCJlbWFpbCI6ImFtaXJha2Fzc2VtODU1QGdtYWlsLmNvbSIsImp0aSI6IjJiMjk3ODcxLTgzZGQtNGE4OC04YzVlLTVhMjEyYmNjYWEwZCIsInRva2VuVmVyc2lvbiI6MSwiaWF0IjoxNzUzNjEzMDIxLCJleHAiOjE3NTM2MTY2MjF9.fnrZsWVyY0x3DQMA-YdQ_KZCocR8joaImnr54mg3ts0UefYSFwIQrw6OiKlMmqDkXlt1IWb0iph2Lkhpx9FgJjz0YvH0dxHl1wdraZzrCT4M21IZeohMpmZNtm_oRYxN7P_NF0fRgyothhJ-I-baIsegz_d6zDbj6xs9muHyilFIHK9V_jyX4Vc_k9H9wO-ZNNlIQcyslS1cKuWniAmYp3MbUv-ViRVxQ4Vi9Nn0mMyy3SasfVzpKm0uAk7Us8SI3cv7erraUCH0difQPbyR_kvIuWj2lDaz-L09OlABxpLNVMm3IttFbZ9zu1d6D_2hQqDWK5t2t6yZafne4bmefQ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation {\r\n  deleteNote(id: \"6885ff13781740211376be4b\")\r\n}\r\n",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/graphql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "fetch-notes",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg1ZTgyZTEwZDc4ZWQwY2VmM2E2YTAiLCJlbWFpbCI6ImFtaXJha2Fzc2VtODU1QGdtYWlsLmNvbSIsImp0aSI6ImM1M2E1ZTE5LTZiMGYtNDU1Ni04ZDY0LTc5ZmY1OWIyZDI1NiIsInRva2VuVmVyc2lvbiI6MSwiaWF0IjoxNzUzNjExNjE4LCJleHAiOjE3NTM2MTUyMTh9.jvRCjhcQqDGXhISzju8Hnjoc0tOITme9yBXr1ER6UJXBbWtmvYUtRIRworgGdfFpmVOILMyPQqYyCHNKmWJ03ZC-qRlvTx7OZzx8qNCjIus3vMPURHjdI01RSe0XsQ73DxW70B6RBnmnuHtukOyKDdyf7Lssdn8cN5a01AfDVK0MZazHG-nslxCUq0Q216OxsXGL4JcoQD3WvS54TAl_Ka_W6sW2npzm5rvMM3xO5dDirbbZL3KsEsMHqs70zpy_VKyOJxt-CptBEt1qKrJ4dDkxIzqiuIpxZGC16VCS7Xv1JdHlWWdYjTNqhdzhQ7AOPjY9vy7uR8vks1X6xfOtlw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "{\r\n  notes(title: \"meeting\", page: 1, limit: 5) {\r\n    id\r\n    title\r\n    content\r\n    user {\r\n      id\r\n      email\r\n    }\r\n  }\r\n}\r\n",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/graphql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "summarize-note",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg1ZTgyZTEwZDc4ZWQwY2VmM2E2YTAiLCJlbWFpbCI6ImFtaXJha2Fzc2VtODU1QGdtYWlsLmNvbSIsImp0aSI6IjJiMjk3ODcxLTgzZGQtNGE4OC04YzVlLTVhMjEyYmNjYWEwZCIsInRva2VuVmVyc2lvbiI6MSwiaWF0IjoxNzUzNjEzMDIxLCJleHAiOjE3NTM2MTY2MjF9.fnrZsWVyY0x3DQMA-YdQ_KZCocR8joaImnr54mg3ts0UefYSFwIQrw6OiKlMmqDkXlt1IWb0iph2Lkhpx9FgJjz0YvH0dxHl1wdraZzrCT4M21IZeohMpmZNtm_oRYxN7P_NF0fRgyothhJ-I-baIsegz_d6zDbj6xs9muHyilFIHK9V_jyX4Vc_k9H9wO-ZNNlIQcyslS1cKuWniAmYp3MbUv-ViRVxQ4Vi9Nn0mMyy3SasfVzpKm0uAk7Us8SI3cv7erraUCH0difQPbyR_kvIuWj2lDaz-L09OlABxpLNVMm3IttFbZ9zu1d6D_2hQqDWK5t2t6yZafne4bmefQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\r\n  notes(title: \"meeting\", page: 1, limit: 5) {\r\n    id\r\n    title\r\n    content\r\n    user {\r\n      id\r\n      email\r\n    }\r\n  }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/notes/6886037faa34aae79c8d8052/summarize",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"notes",
+								"6886037faa34aae79c8d8052",
+								"summarize"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
